@@ -1,0 +1,11 @@
+.burger {
+  background-color: transparent;
+  border: 0;
+  display: none;
+  @include respond-to(tablet) {
+    display: block;
+    min-width: 24px;
+    position: relative;
+    z-index: 2;
+  }
+}
