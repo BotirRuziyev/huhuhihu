@@ -120,7 +120,7 @@
       <client-only>
         <swiper
           :modules="modules"
-          :slides-per-view="2"
+          :slides-per-view="6"
           :space-between="10"
           :autoHeight="true"
           :loop="true"
