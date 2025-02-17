@@ -3,6 +3,7 @@
     z-index: 3;
     .title {
         margin-bottom: 40px;
+        padding: 0 14px;
         position: relative;
         z-index: 3;
         font-family: var(--third-family);
@@ -22,7 +23,7 @@
             color: #fe9033;
         }
         @include respond-to(telephone) {
-            font-size: 24px;
+            font-size: 28px;
             line-height: 100%;
         }
     }
@@ -33,9 +34,9 @@
         position: relative;
         z-index: 3;
         .crypto-exchange__form {
-            margin-bottom: 88px;
+            margin-bottom: 44px;
             @include respond-to(telephone) {
-                margin-bottom: 76px;
+                margin-bottom: 30px;
             }
             .exchange-item__wrapper {
                 display: flex;
@@ -61,8 +62,6 @@
                         z-index: 2;
                     }
                     &:nth-child(3) {
-                        position: relative;
-                        z-index: 1;
                         .exchange-item__bottom {
                             &::after {
                                 transform: rotate(-180deg);
@@ -234,7 +233,7 @@
                                 opacity: 0;
                                 transition: 0.2s;
                                 &__in {
-                                    max-height: 183px;
+                                    max-height: 184px;
                                     overflow: auto;
                                     &::-webkit-scrollbar {
                                         width: 2px;
@@ -445,16 +444,12 @@
         position: relative;
         z-index: 3;
         @include respond-to(telephone) {
-            margin-bottom: 90px;
+            margin-bottom: 30px;
         }
         &__in {
-            width: calc(100% + 28px);
-            padding: 0 20px;
-            margin-left: -14px;
-            overflow-x: auto;
-            &::-webkit-scrollbar {
-                height: 0;
-            }
+            max-width: 100%;
+            overflow: hidden;
+            border: 1px solid transparent;
         }
         &__title {
             margin-bottom: 33px;
@@ -466,50 +461,74 @@
             font-size: 14px;
             line-height: 100%;
             color: #7a8089;
-        }
-        &__list {
-            min-width: 910px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            .border-left {
-                width: 1px;
-                height: 24px;
-                background: rgba(255, 255, 255, 0.35);
-                opacity: 0.2;
+            @include respond-to(telephone) {
+                margin-bottom: 30px;
             }
+        }
+        .swiper-wrapper {
             .list-item {
+                min-height: 100%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1px;
+                &.swiper-slide-prev {
+                    &::after {
+                        display: none;
+                    }
+                }
+                &.swiper-slide-duplicate-prev {
+                    &::after {
+                        display: none;
+                    }
+                }
+                &::after {
+                    content: "";
+                    width: 1px;
+                    min-height: 24px;
+                    background: rgba(255, 255, 255, 0.35);
+                    opacity: 0.2;
+                    position: absolute;
+                    top: 50%;
+                    right: -2px;
+                    transform: translateY(-50%);
+                }
                 @include respond-to(telephone) {
-                    &:nth-child(1) {
-                        img {
-                            height: 29.24px;
-                        }
+                    padding: 0 20px;
+                    img {
+                        max-width: 100%;
                     }
-                    &:nth-child(3) {
-                        img {
-                            height: 17.91px;
-                        }
-                    }
-                    &:nth-child(5) {
-                        img {
-                            height: 18.8px;
-                        }
-                    }
-                    &:nth-child(7) {
-                        img {
-                            height: 24px;
-                        }
-                    }
-                    &:nth-child(9) {
-                        img {
-                            height: 16px;
-                        }
-                    }
-                    &:nth-child(11) {
-                        img {
-                            height: 19.2px;
-                        }
-                    }
+                    // &:nth-child(1) {
+                    //     img {
+                    //         height: 24px;
+                    //     }
+                    // }
+                    // &:nth-child(2) {
+                    //     img {
+                    //         height: 17.91px;
+                    //     }
+                    // }
+                    // &:nth-child(3) {
+                    //     img {
+                    //         height: 18.8px;
+                    //     }
+                    // }
+                    // &:nth-child(4) {
+                    //     img {
+                    //         height: 24px;
+                    //     }
+                    // }
+                    // &:nth-child(5) {
+                    //     img {
+                    //         height: 16px;
+                    //     }
+                    // }
+                    // &:nth-child(6) {
+                    //     img {
+                    //         height: 19.2px;
+                    //     }
+                    // }
                 }
             }
         }

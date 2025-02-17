@@ -28,7 +28,7 @@
             <div class="exchange-item__bottom"></div>
           </div>
           <button class="swap-btn">
-            <img src="@/assets/img/swap2.svg" alt="" />
+            <img src="~assets/img/swap2.svg" alt="" />
           </button>
           <div class="exchange-item">
             <div class="exchange-head">
@@ -41,7 +41,6 @@
               <div class="border-left"></div>
               <FormSelect
                 :isSelect="isSelect"
-                @update:isSelect="updateIsSelect"
                 coinName="USDT"
                 tokenStandard="TRC20"
                 :coinImg="usdt"
@@ -96,52 +95,99 @@
     </div>
     <div class="our-partners">
       <div class="our-partners__title">Наши партнеры:</div>
-      <div class="our-partners__in">
-        <ul class="our-partners__list">
-          <li class="list-item">
-            <img src="@/assets/img/binance.svg" alt="" />
-          </li>
-          <div class="border-left"></div>
-          <li class="list-item">
-            <img src="@/assets/img/coinbase.svg" alt="" />
-          </li>
-          <div class="border-left"></div>
-          <li class="list-item">
-            <img src="@/assets/img/bitcoin2.svg" alt="" />
-          </li>
-          <div class="border-left"></div>
-          <li class="list-item">
-            <img src="@/assets/img/tether.svg" alt="" />
-          </li>
-          <div class="border-left"></div>
-          <li class="list-item">
-            <img src="@/assets/img/bitmex.svg" alt="" />
-          </li>
-          <div class="border-left"></div>
-          <li class="list-item">
-            <img src="@/assets/img/bestchange.svg" alt="" />
-          </li>
-        </ul>
-      </div>
+      <!-- <div class="our-partners__in swiper-container">
+        <div class="our-partners__list swiper-wrapper">
+          <div class="list-item swiper-slide">
+            <img src="~assets/img/binance.svg" alt="" />
+          </div>
+          <div class="list-item swiper-slide">
+            <img src="~assets/img/coinbase.svg" alt="" />
+          </div>
+          <div class="list-item swiper-slide">
+            <img src="~assets/img/bitcoin2.svg" alt="" />
+          </div>
+          <div class="list-item swiper-slide">
+            <img src="~assets/img/tether.svg" alt="" />
+          </div>
+          <div class="list-item swiper-slide">
+            <img src="~assets/img/bitmex.svg" alt="" />
+          </div>
+          <div class="list-item swiper-slide">
+            <img src="~assets/img/bestchange.svg" alt="" />
+          </div>
+        </div>
+      </div> -->
+      <client-only>
+        <swiper
+          :modules="modules"
+          :slides-per-view="2"
+          :space-between="10"
+          :autoHeight="true"
+          :loop="true"
+          :autoplay="{ delay: 2500, disableOnInteraction: false }"
+          :breakpoints="{
+            0: {
+              slidesPerView: 2.4,
+            },
+            576: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 4,
+            },
+            1024: {
+              slidesPerView: 6,
+            },
+          }"
+          :navigation="false"
+          class="our-partners__in"
+        >
+          <swiper-slide class="list-item">
+            <img src="~assets/img/binance.svg" alt="" />
+          </swiper-slide>
+          <swiper-slide class="list-item">
+            <img src="~assets/img/coinbase.svg" alt="" />
+          </swiper-slide>
+          <swiper-slide class="list-item">
+            <img src="~assets/img/bitcoin2.svg" alt="" />
+          </swiper-slide>
+          <swiper-slide class="list-item">
+            <img src="~assets/img/tether.svg" alt="" />
+          </swiper-slide>
+          <swiper-slide class="list-item">
+            <img src="~assets/img/bitmex.svg" alt="" />
+          </swiper-slide>
+          <swiper-slide class="list-item">
+            <img src="~assets/img/bestchange.svg" alt="" />
+          </swiper-slide>
+        </swiper>
+      </client-only>
     </div>
     <div class="exchange-right__bg">
-      <img src="@/assets/img/bg-right.png" alt="" />
+      <img src="~assets/img/bg-right.png" alt="" />
     </div>
     <div class="exchange-center__bg">
-      <img src="@/assets/img/bg-center.png" alt="" />
+      <img src="~assets/img/bg-center.png" alt="" />
     </div>
   </div>
 </template>
 <script>
-import FormSelect from "@/components/exchange/form-select";
-import FormInput from "@/components/form-input";
-import FormSwitch from "@/components/form-switch";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import FormSelect from "~/components/exchange/form-select";
+import FormInput from "~/components/form-input";
+import FormSwitch from "~/components/form-switch";
 
 import bitcoin from "@/assets/img/bitcoin.svg";
 import usdt from "@/assets/img/usdt.svg";
 
 export default {
   components: {
+    Swiper,
+    SwiperSlide,
     FormSelect,
     FormInput,
     FormSwitch,
@@ -202,6 +248,7 @@ export default {
       cardNumber: "",
       wallet: "",
       promoCode: "",
+      modules: [Autoplay, Pagination, Navigation],
     };
   },
   methods: {
@@ -227,9 +274,31 @@ export default {
       let decimalPart = parts[1] !== undefined ? "." + parts[1] : "";
       this.handOver = integerPart + decimalPart;
     },
-    updateIsSelect(val) {
-      this.isSelect = val;
-    },
   },
+  // mounted() {
+  //   this.swiper = new this.$swiper(".swiper-container", {
+  //     modules: [this.$swiperAutoplay],
+  //     autoHeight: true,
+  //     loop: true,
+  //     autoplay: {
+  //       delay: 2500,
+  //       disableOnInteraction: false,
+  //     },
+  //     breakpoints: {
+  //       0: {
+  //         slidesPerView: 2.4,
+  //       },
+  //       576: {
+  //         slidesPerView: 3,
+  //       },
+  //       768: {
+  //         slidesPerView: 4,
+  //       },
+  //       1024: {
+  //         slidesPerView: 6,
+  //       },
+  //     },
+  //   });
+  // },
 };
 </script>

@@ -19,9 +19,12 @@
     @include respond-to(tablet-lend) {
       gap: 20px;
     }
+    @include respond-to(telephone) {
+      gap: 10px;
+    }
     .logo {
       @include respond-to(telephone) {
-        max-width: 117px;
+        max-width: 140px;
         width: 100%;
       }
       img {

@@ -1,5 +1,5 @@
 .footer {
-  padding: 0 30px 18px;
+  padding: 0 14px 18px;
   position: relative;
   z-index: 4;
   @include respond-to(phone) {
@@ -76,6 +76,7 @@
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 40px;
+        row-gap: 30px;
         border: 0;
         border-top: 1px solid rgba(122, 128, 137, 0.4);
         order: 3;
@@ -97,13 +98,16 @@
         @include respond-to(phone) {
           margin-bottom: 20px;
         }
+        @include respond-to(telephone) {
+          margin-bottom: 10px;
+        }
       }
       .nav-link__list {
         display: flex;
         flex-direction: column;
         gap: 18px;
         @include respond-to(phone) {
-          margin-bottom: 12px;
+          gap: 10px;
         }
         .nav-link {
           font-family: var(--second-family);

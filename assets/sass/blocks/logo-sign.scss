@@ -12,7 +12,7 @@
     }
 
     .btn-round {
-      width: 136px;
+      min-width: 136px;
       padding: 11px;
       border-radius: 10px;
       border-color: #7a8089;
@@ -23,7 +23,7 @@
       text-align: center;
       color: $white;
       @include respond-to(telephone) {
-        width: 90px;
+        min-width: 90px;
       }
       &:hover {
         border-color: #fe9033;
