@@ -176,7 +176,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import FormSelect from "~/components/exchange/form-select";
 import FormInput from "~/components/form-input";
 import FormSwitch from "~/components/form-switch";
@@ -248,7 +248,7 @@ export default {
       cardNumber: "",
       wallet: "",
       promoCode: "",
-      modules: [Autoplay, Pagination, Navigation],
+      modules: [Autoplay, Navigation],
     };
   },
   methods: {
