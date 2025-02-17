@@ -450,6 +450,11 @@
             max-width: 100%;
             overflow: hidden;
             border: 1px solid transparent;
+            @include respond-to(telephone) {
+                max-width: calc(100% + 28px);
+                width: calc(100% + 28px);
+                margin-left: -14px;
+            }
         }
         &__title {
             margin-bottom: 33px;
